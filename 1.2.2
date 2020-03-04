@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("iveskite atstuma iki sodo");
+            double dist = Convert.ToDouble(Console.ReadLine())*2;
+            Console.WriteLine("iveskite kuro sanaudas 100km");
+            double consump = Convert.ToDouble(Console.ReadLine())/100;
+            Console.WriteLine("iveskite kuro kaina");
+            double price = Convert.ToDouble(Console.ReadLine());
+            double total=dist*consump*price;
+            Console.WriteLine(total);
+            Console.ReadKey();
+        }
+    }
+}
