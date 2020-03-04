@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        public static int operative(int a)
+        {
+            return a%2==0 ? 0 : 1;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("iveskite 1 skaiciu");
+            int num1 = Convert.ToInt32(Convert.ToDouble(Console.ReadLine()));
+
+            Console.WriteLine(operative(num1));
+            Console.ReadKey();
+        }
+    }
+}
