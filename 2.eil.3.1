@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        public static string rotation(string a)
+        {
+            return a.Substring(1, a.Length - 1) + a.Substring(0, 1); //string shift
+        }
+        static void Main(string[] args)          
+        {
+            string text=Console.ReadLine();
+            Console.WriteLine(rotation(text));
+            
+            Console.ReadKey();
+        }
+    }
+}
