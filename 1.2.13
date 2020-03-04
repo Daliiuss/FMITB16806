@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            double[] coord = new double [6];
+            Console.WriteLine("iveskite 1 skaiciu");
+            for (int i = 0; i <= coord.Length-1; i++)
+            {
+                coord[i]=Convert.ToDouble(Console.ReadLine());
+            }
+            double Area = Math.Abs((coord[0] * (coord[3] - coord[5]) + coord[2] * (coord[5] - coord[1]) + coord[4] * (coord[1] - coord[3])) / 2);
+
+            Console.WriteLine(Area);
+
+            Console.ReadKey();
+        }
+    }
+}
