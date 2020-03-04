@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        public static int checksymbol (int s, int c)
+        {
+            return ((33 <= c && c < 48)) || (58 <= c) ? s += 1 : s;
+        }
+        public static int checknumber(int n, int c)
+        {
+            return ((48 <= c) && (c <= 57)) ? n += 1 : n;
+        }
+        public static int checkspace(int w, int c)
+        {
+            return (c==32) ? w+=1 : w;
+        }
+        static void Main(string[] args)          
+        {
+            string text = Console.ReadLine();
+            int sym = 0;
+            int num = 0;
+            int wrd = 0;
+            for (int i = 0; i < text.Length; i++)
+            {
+                sym=checksymbol(sym,Convert.ToInt32(text[i]));
+                num=checknumber(num, Convert.ToInt32(text[i]));
+                wrd=checkspace(wrd, Convert.ToInt32(text[i]));
+                Console.WriteLine(Convert.ToInt32(text[i]));
+            }
+            Console.WriteLine("contains symbols: " + sym + ", numbers: " + num +", words: " + wrd );
+            Console.ReadKey();
+        }
+    }
+}
