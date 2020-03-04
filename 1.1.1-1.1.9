@@ -1,0 +1,56 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] ketureilis = { "Norėčiau daug ką pasakyt, bet tai negali virsti laišku.", "Nebent tik ašara, nebent tik šypsena keistam rudens sapne...", "Nebent virpėjimu keistu ir neužrašomu,", "Nebent tyla…", "/V. Mykolaitis-Putinas/" };
+
+            string textline = "Auditoriją remontuoja jau 2 savaites";
+            Console.WriteLine(textline);
+            Console.WriteLine("Greitai Prezidento rinkimai!");
+            string pronoun = "kju";
+            string input=Console.ReadLine();
+            if (input == "q")
+                Console.WriteLine(pronoun);
+            else
+                Console.WriteLine("eh?");
+            for (int i = 0; i < ketureilis.Length; i++)
+                Console.WriteLine(ketureilis[i]);
+
+            string path = Directory.GetCurrentDirectory();
+            Console.WriteLine(path);
+
+            Console.WriteLine("iveskite x, y, z");
+            string x = Console.ReadLine();
+            string y = Console.ReadLine();
+            string z = Console.ReadLine();
+
+            Console.WriteLine("Jus ivedete: "+x+" "+y+" "+z);
+
+            string inline = Console.ReadLine();
+            Console.WriteLine(inline);
+     
+            
+            int intas = 0; int intas1 = 0; char charas = 'a';
+
+
+            double[] arrayofnumber = {(3.0), (12.5), (52.3), (300.0), (1200.5), (5300.3) };
+            for (int j = 0; j <= arrayofnumber.Length-1; j+=3)
+            {
+                Console.WriteLine("{0,-20:}{1,5:N1}\n", arrayofnumber[j], arrayofnumber[j+1],arrayofnumber[j+2]);
+            }
+
+            Console.ReadKey();
+
+            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+        }
+    }
+}
