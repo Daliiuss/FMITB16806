@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)          
+        {
+            double[] y = new double[8];
+            int j = 0;
+            for (double i = -2; i < 2; i += 0.5, j++)
+            {
+                y[j] = 2.4 * Math.Pow(i, 2) + 5 * i - 3;
+                Console.WriteLine(y[j] + ", ");
+            }
+            Console.ReadKey();
+        }
+    }
+}
