@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("pasirinkite");
+            int caseSwitch = Convert.ToInt32(Console.ReadLine());
+
+            switch (caseSwitch)
+            {
+                case 1:
+                    Console.WriteLine("Staciakampis");
+                    break;
+                case 2:
+                    Console.WriteLine("Trikampis");
+                    break;
+                case 3:
+                    Console.WriteLine("Trapecija");
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+
+        }
+    }
+}
