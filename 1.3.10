@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int rndnum = rnd.Next(1, 10);
+            for (int i = 0; i < 5; i++)
+            {
+                if (Convert.ToInt32(Console.ReadLine()) == rndnum)
+                {
+                    Console.WriteLine("you win");
+                    Console.ReadKey();
+                    rndnum = 0;
+                    break;
+                }
+            }
+            if (rndnum != 0)
+            {
+                Console.WriteLine("sorry m8");
+                Console.ReadKey();
+            }
+        }
+    }
+}
