@@ -15,6 +15,13 @@ namespace ConsoleApp6
         double avrg = 0;
         double med = 0;
 
+        // finds average of all grades (except exam)
+        public double CalcAvrg(List<double> grades)
+        {        return grades.Average();}
+        // finds mediana of all grades (except exam)
+        public double CalcMed(List<double> grades)
+        {    return (grades.Count - 1) / 2;}
+
         public void GetStudentDetails(string inname, string inlastname, List<double> ingrades, double inexam)
         {
             name = inname;
@@ -24,54 +31,52 @@ namespace ConsoleApp6
             avrg=CalcAvrg(grades);
             med = CalcMed(grades);
         }
-        public double CalcAvrg(List<double> grades)
-        {
-            return grades.Average();
-        }
-        public double CalcMed(List<double> grades)
-        {
-            return (grades.Count-1)/2;
-        }
+
+        //created for testing output data
         public void PrintToConsoleStudentDetails()
         {
             Console.WriteLine(name);
             Console.WriteLine(lastname);
             Console.WriteLine(exam);
         }
+        //method for printing grade averages
         public void PrintToConsoleStudentAverage()
         {
-            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5}", name, lastname, avrg));
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5:.##}", name, lastname, avrg));
         }
+        //method for printing grade mediana
         public void PrintToConsoleStudentMediana()
         {
-            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5}", name, lastname, med));
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5:.##}", name, lastname, med));
         }
     }
     class Program
     {
+        // holds all the students that were created
         static List<Student> allstudents = new List<Student>();
       
+        //method 
         public static void EnterStudents(int studentcount)
         {
             Student tempstudent = new Student();
             string inname, inlastname;
             List<double> ingrades = new List<double>();
-            List<double> randgrades = new List<double>();
             double inexam = 0;
             string inp = "";
-            string ifrnd = "";
+            string ifrnd = "";             //check if user wants random grades
             var rand = new Random();
-
+            //bool result;
             for (int i = 0; i < studentcount; i++)
             {
-                Console.WriteLine("enter name");
+                Console.WriteLine("Enter name");
                 inname = Console.ReadLine();
-                Console.WriteLine("enter lastname");
+                Console.WriteLine("Enter lastname");
                 inlastname = Console.ReadLine();
-                Console.WriteLine("are you want to generate random homework and exam grades? y/n ");
+                Console.WriteLine("Are you want to generate random homework and exam grades? y/n ");
                 ifrnd = Console.ReadLine();
                 if (ifrnd == "y")
                 {
+                    // random grades are set to 100 to avoid overload
                     for (int z = 0; z < rand.Next(1, 100); z++)
                     {
                         ingrades.Add(rand.Next(1, 11));
@@ -86,13 +91,16 @@ namespace ConsoleApp6
                         inp = Console.ReadLine();
                         if (inp == "-t")
                             break;
+                        
                         else { ingrades.Add(Convert.ToDouble(inp)); }
                     }
-                    Console.WriteLine("enter exam");
+                    Console.WriteLine("enter exam grade");
                     inexam = Convert.ToDouble(Console.ReadLine());
                 }
-                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam);
-                Program.allstudents.Add(tempstudent);
+                
+                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam); //creates temp student to add to studentlist
+                Program.allstudents.Add(tempstudent); //adds student to the list
+                //clearing info
                 tempstudent = new Student();
                 ingrades.Clear();
             }
