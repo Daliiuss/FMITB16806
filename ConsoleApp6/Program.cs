@@ -50,33 +50,47 @@ namespace ConsoleApp6
     class Program
     {
         static List<Student> allstudents = new List<Student>();
+      
         public static void EnterStudents(int studentcount)
         {
             Student tempstudent = new Student();
             string inname, inlastname;
             List<double> ingrades = new List<double>();
+            List<double> randgrades = new List<double>();
             double inexam = 0;
             string inp = "";
+            string ifrnd = "";
+            var rand = new Random();
+
             for (int i = 0; i < studentcount; i++)
             {
                 Console.WriteLine("enter name");
                 inname = Console.ReadLine();
                 Console.WriteLine("enter lastname");
                 inlastname = Console.ReadLine();
-                Console.WriteLine("enter grades");
-                for (int j = 0; j < 2; j++)
+                Console.WriteLine("are you want to generate random homework and exam grades? y/n ");
+                ifrnd = Console.ReadLine();
+                if (ifrnd == "y")
                 {
-                    
+                    for (int z = 0; z < rand.Next(1, 100); z++)
+                    {
+                        ingrades.Add(rand.Next(1, 11));
+                    }
+                    inexam = rand.Next(1, 11);
                 }
-                while (inp != "-t")
+                else
                 {
-                    inp=Console.ReadLine();
-                    if (inp == "-t")
-                        break;
-                    else { ingrades.Add(Convert.ToDouble(inp)); }
+                    Console.WriteLine("enter grades, to stop type '-t' ");
+                    while (inp != "-t")
+                    {
+                        inp = Console.ReadLine();
+                        if (inp == "-t")
+                            break;
+                        else { ingrades.Add(Convert.ToDouble(inp)); }
+                    }
+                    Console.WriteLine("enter exam");
+                    inexam = Convert.ToDouble(Console.ReadLine());
                 }
-                Console.WriteLine("enter exam");
-                inexam = Convert.ToDouble(Console.ReadLine());
                 tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam);
                 Program.allstudents.Add(tempstudent);
                 tempstudent = new Student();
