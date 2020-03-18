@@ -13,6 +13,7 @@ namespace ConsoleApp6
         List<double> grades = new List<double>();
         double exam = 0;
         double avrg = 0;
+        double med = 0;
 
         public void GetStudentDetails(string inname, string inlastname, List<double> ingrades, double inexam)
         {
@@ -20,11 +21,16 @@ namespace ConsoleApp6
             lastname = inlastname;
             grades = ingrades;
             exam = inexam;
-            avrg=CalcAvrg(grades, avrg);
+            avrg=CalcAvrg(grades);
+            med = CalcMed(grades);
         }
-        public double CalcAvrg(List<double> grades, double avrg)
+        public double CalcAvrg(List<double> grades)
         {
-            return avrg = grades.Average();
+            return grades.Average();
+        }
+        public double CalcMed(List<double> grades)
+        {
+            return (grades.Count-1)/2;
         }
         public void PrintToConsoleStudentDetails()
         {
@@ -35,6 +41,10 @@ namespace ConsoleApp6
         public void PrintToConsoleStudentAverage()
         {
             Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5}", name, lastname, avrg));
+        }
+        public void PrintToConsoleStudentMediana()
+        {
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5}", name, lastname, med));
         }
     }
     class Program
@@ -75,6 +85,7 @@ namespace ConsoleApp6
             {
                 Console.WriteLine("1 - enter new students");
                 Console.WriteLine("2 - get student list with averages");
+                Console.WriteLine("3 - get student list with mediana");
                 Console.WriteLine("TERMINATE - exit");
                 caseSwitch = Console.ReadLine();
                 switch (caseSwitch)
@@ -93,6 +104,15 @@ namespace ConsoleApp6
                         }
                         
                         break;
+                    case "3":
+                        Console.WriteLine("Vardas     Pavardė        Galutinis(Med.)");
+                        Console.WriteLine("-----------------------------------------");
+                        for (int i = 0; i < allstudents.Count(); i++)
+                        {
+                            allstudents[i].PrintToConsoleStudentMediana();
+                        }
+                        break;
+                    
                     case "TERMINATE":
                         flag = "TERMINATE";
                         return;
