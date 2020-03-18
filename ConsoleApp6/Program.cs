@@ -56,7 +56,7 @@ namespace ConsoleApp6
             string inname, inlastname;
             List<double> ingrades = new List<double>();
             double inexam = 0;
-
+            string inp = "";
             for (int i = 0; i < studentcount; i++)
             {
                 Console.WriteLine("enter name");
@@ -66,7 +66,14 @@ namespace ConsoleApp6
                 Console.WriteLine("enter grades");
                 for (int j = 0; j < 2; j++)
                 {
-                    ingrades.Add(Convert.ToDouble(Console.ReadLine()));
+                    
+                }
+                while (inp != "-t")
+                {
+                    inp=Console.ReadLine();
+                    if (inp == "-t")
+                        break;
+                    else { ingrades.Add(Convert.ToDouble(inp)); }
                 }
                 Console.WriteLine("enter exam");
                 inexam = Convert.ToDouble(Console.ReadLine());
