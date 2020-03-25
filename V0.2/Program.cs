@@ -4,18 +4,196 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace V0._2
+namespace ConsoleApp6
 {
+    class Student
+    {
+        string name = string.Empty;
+        string lastname = string.Empty;
+        List<double> grades = new List<double>();
+        double exam = 0;
+        double avrg = 0;
+        double med = 0;
+
+        // finds average of all grades (except exam)
+        public double CalcAvrg(List<double> grades)
+        {
+            return grades.Average();
+        }
+        // finds mediana of all grades (except exam)
+        public double CalcMed(List<double> grades)
+        {
+            return (grades.Count - 1) / 2;
+        }
+
+        public void GetStudentDetails(string inname, string inlastname, List<double> ingrades, double inexam)
+        {
+            name = inname;
+            lastname = inlastname;
+            grades = ingrades;
+            exam = inexam;
+            avrg = CalcAvrg(grades);
+            med = CalcMed(grades);
+        }
+
+        //created for testing output data
+        public void PrintToConsoleStudentDetails()
+        {
+            Console.WriteLine(name);
+            Console.WriteLine(lastname);
+            Console.WriteLine(exam);
+        }
+        //method for printing grade averages
+        public void PrintToConsoleStudentAverage()
+        {
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5:.##}", name, lastname, avrg));
+        }
+        //method for printing grade mediana
+        public void PrintToConsoleStudentMediana()
+        {
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5:.##}", name, lastname, med));
+        }
+    }
     class Program
     {
+        // holds all the students that were created
+        static List<Student> allstudents = new List<Student>();
+
+        //method 
+        public static void EnterStudents(int studentcount)
+        {
+            Student tempstudent = new Student();
+            string inname, inlastname;
+            List<double> ingrades = new List<double>();
+            double inexam = 0;
+            string inp = "";
+            string ifrnd = "";             //check if user wants random grades
+            var rand = new Random();
+            //bool result;
+            for (int i = 0; i < studentcount; i++)
+            {
+                Console.WriteLine("Enter name");
+                inname = Console.ReadLine();
+                Console.WriteLine("Enter lastname");
+                inlastname = Console.ReadLine();
+                Console.WriteLine("Are you want to generate random homework and exam grades? y/n ");
+                ifrnd = Console.ReadLine();
+                if (ifrnd == "y")
+                {
+                    // random grades are set to 100 to avoid overload
+                    for (int z = 0; z < rand.Next(1, 100); z++)
+                    {
+                        ingrades.Add(rand.Next(1, 11));
+                    }
+                    inexam = rand.Next(1, 11);
+                }
+                else
+                {
+                    Console.WriteLine("enter grades, to stop type '-t' ");
+                    while (inp != "-t")
+                    {
+                        inp = Console.ReadLine();
+                        if (inp == "-t")
+                            break;
+
+                        else { ingrades.Add(Convert.ToDouble(inp)); }
+                    }
+                    Console.WriteLine("enter exam grade");
+                    inexam = Convert.ToDouble(Console.ReadLine());
+                }
+
+                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam); //creates temp student to add to studentlist
+                Program.allstudents.Add(tempstudent); //adds student to the list
+                //clearing info
+                tempstudent = new Student();
+                ingrades.Clear();
+            }
+
+        }
+        public static void ReadFile()
+        {
+            Student tempstudent = new Student();
+            string inname, inlastname;
+            List<double> ingrades = new List<double>();
+            double inexam = 0;
+            Console.WriteLine("enter file directory");
+            string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";//Console.ReadLine();
+            string[] lines = System.IO.File.ReadAllLines(textFile);
+            foreach (string line in lines.Skip(1))
+            {
+                char[] whitespace = new char[] { ' ', '\t' };
+                List<string> ssizes = new List<string>(line.Split(whitespace));
+                inname = ssizes[0];
+                inlastname = ssizes[1];
+                for (int i = 2; i < ssizes.Count() - 2; i++)
+                {
+                    ingrades.Add(Convert.ToDouble(ssizes[i]));
+                }
+                inexam = Convert.ToDouble(ssizes[ssizes.Count()-1]);
+                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam);
+                Program.allstudents.Add(tempstudent);
+                tempstudent = new Student();
+                ingrades.Clear();
+            }
+
+
+
+        }
+        public static void MENU()
+        {
+            string flag = " ";
+            string caseSwitch = "";
+            while (flag != "TERMINATE")
+            {
+                Console.WriteLine("1 - enter new students");
+                Console.WriteLine("2 - get students from file");
+                Console.WriteLine("3 - get student list with averages");
+                Console.WriteLine("4 - get student list with mediana");
+                Console.WriteLine("TERMINATE - exit");
+                caseSwitch = Console.ReadLine();
+                switch (caseSwitch)
+                {
+                    case "1":
+                        Console.WriteLine("enter student count ");
+                        int studentcount = Convert.ToInt32(Console.ReadLine());
+                        EnterStudents(studentcount);
+                        break;
+                    case "2":
+                        ReadFile();
+                        break;
+                    case "3":
+                        Console.WriteLine("Vardas     Pavardė        Galutinis(Vid.)");
+                        Console.WriteLine("-----------------------------------------");
+                        for (int i = 0; i < allstudents.Count(); i++)
+                        {
+                            allstudents[i].PrintToConsoleStudentAverage();
+                        }
+
+                        break;
+                    case "4":
+                        Console.WriteLine("Vardas     Pavardė        Galutinis(Med.)");
+                        Console.WriteLine("-----------------------------------------");
+                        for (int i = 0; i < allstudents.Count(); i++)
+                        {
+                            allstudents[i].PrintToConsoleStudentMediana();
+                        }
+                        break;
+                    
+
+                    case "TERMINATE":
+                        flag = "TERMINATE";
+                        return;
+                    default:
+                        break;
+                }
+
+            }
+        }
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            MENU();
+
         }
     }
 }
