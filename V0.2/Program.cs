@@ -53,6 +53,10 @@ namespace ConsoleApp6
         {
             Console.WriteLine(String.Format("{0,-15} {1,-15} {2,5:.##}", name, lastname, med));
         }
+        public void PrintToConsoleStudentBoth()
+        {
+            Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", name, lastname, avrg ,med));
+        }
     }
     class Program
     {
@@ -139,6 +143,15 @@ namespace ConsoleApp6
 
 
         }
+        public static void FilePrintOut()
+        {
+            Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", "Vardas", "Pavarde", "Galutinis(Vid.)/", "Galutinis(Med.)"));
+            Console.WriteLine("-----------------------------------------------------------");
+            for (int i = 0; i < allstudents.Count(); i++)
+            {
+                allstudents[i].PrintToConsoleStudentBoth();
+            }
+        }
         public static void MENU()
         {
             string flag = " ";
@@ -160,6 +173,7 @@ namespace ConsoleApp6
                         break;
                     case "2":
                         ReadFile();
+                        FilePrintOut();
                         break;
                     case "3":
                         Console.WriteLine("Vardas     Pavardė        Galutinis(Vid.)");
