@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace V0_3
 {
     class Student
     {
@@ -38,16 +38,16 @@ namespace ConsoleApp6
             this.grades = ingrades;
             this.exam = inexam;
             this.avrg = CalcAvrg(grades);
-            this.med= CalcMed(grades);
+            this.med = CalcMed(grades);
         }
 
-        
+
         //string name = string.Empty;
         //string lastname = string.Empty;
         //List<double> grades = new List<double>();
         //double exam = 0;
-        
-        
+
+
 
         // finds average of all grades (except exam)
         public double CalcAvrg(List<double> grades)
@@ -89,7 +89,7 @@ namespace ConsoleApp6
         }
         public void PrintToConsoleStudentBoth()
         {
-            Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", name, lastname, avrg ,med));
+            Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", name, lastname, avrg, med));
         }
     }
     class Program
@@ -115,31 +115,39 @@ namespace ConsoleApp6
                 Console.WriteLine("Enter lastname");
                 inlastname = Console.ReadLine();
                 Console.WriteLine("Are you want to generate random homework and exam grades? y/n ");
+                Ifrndchoice:
                 ifrnd = Console.ReadLine();
-                if (ifrnd == "y")
+                try
                 {
-                    // random grades are set to 100 to avoid overload
-                    for (int z = 0; z < rand.Next(1, 100); z++)
+                    if (ifrnd == "y")
                     {
-                        ingrades.Add(rand.Next(1, 11));
+                        // random grades are set to 100 to avoid overload
+                        for (int z = 0; z < rand.Next(1, 100); z++)
+                        {
+                            ingrades.Add(rand.Next(1, 11));
+                        }
+                        inexam = rand.Next(1, 11);
                     }
-                    inexam = rand.Next(1, 11);
+                    else
+                    {
+                        Console.WriteLine("enter grades, to stop type '-t' ");
+                        while (inp != "-t")
+                        {
+                            inp = Console.ReadLine();
+                            if (inp == "-t")
+                                break;
+
+                            else { ingrades.Add(Convert.ToDouble(inp)); }
+                        }
+                        Console.WriteLine("enter exam grade");
+                        inexam = Convert.ToDouble(Console.ReadLine());
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("enter grades, to stop type '-t' ");
-                    while (inp != "-t")
-                    {
-                        inp = Console.ReadLine();
-                        if (inp == "-t")
-                            break;
-
-                        else { ingrades.Add(Convert.ToDouble(inp)); }
-                    }
-                    Console.WriteLine("enter exam grade");
-                    inexam = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Wrong input! *user input error*");
+                    goto Ifrndchoice; 
                 }
-
                 tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam); //creates temp student to add to studentlist
                 Program.allstudents.Add(tempstudent); //adds student to the list
                 //clearing info
@@ -150,13 +158,23 @@ namespace ConsoleApp6
         }
         public static void ReadFile()
         {
+
             Student tempstudent = new Student();
             string inname, inlastname;
             List<double> ingrades = new List<double>();
             double inexam = 0;
+            string textFile = "";
             Console.WriteLine("enter file directory");
-            string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";
-            //string textFile = Console.ReadLine();
+
+            //string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";
+            Direnter:
+                textFile = Console.ReadLine();
+            if (System.IO.File.Exists(textFile) == false)
+            {
+                Console.WriteLine("Wrong input / file doesn't exist. Please try again.");
+                goto Direnter;
+            }
+            
             string[] lines = System.IO.File.ReadAllLines(textFile);
             foreach (string line in lines.Skip(1))
             {
@@ -166,9 +184,19 @@ namespace ConsoleApp6
                 inlastname = ssizes[1];
                 for (int i = 2; i < ssizes.Count() - 2; i++)
                 {
-                    ingrades.Add(Convert.ToDouble(ssizes[i]));
+                    LoopStart:
+                    try
+                    {
+                        ingrades.Add(Convert.ToDouble(ssizes[i]));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Wrong input! *read file error*" );
+                        goto LoopStart;
+                    }
+
                 }
-                inexam = Convert.ToDouble(ssizes[ssizes.Count()-1]);
+                inexam = Convert.ToDouble(ssizes[ssizes.Count() - 1]);
                 tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam);
                 Program.allstudents.Add(tempstudent);
                 tempstudent = new Student();
@@ -218,23 +246,38 @@ namespace ConsoleApp6
                         FilePrintOut();
                         break;
                     case "3":
-                        Console.WriteLine("Vardas     Pavardė        Galutinis(Vid.)");
-                        Console.WriteLine("-----------------------------------------");
-                        for (int i = 0; i < allstudents.Count(); i++)
+                       
+                        try
                         {
-                            allstudents[i].PrintToConsoleStudentAverage();
+                            Console.WriteLine("Vardas     Pavardė        Galutinis(Vid.)");
+                            Console.WriteLine("-----------------------------------------");
+                            for (int i = 0; i < allstudents.Count(); i++)
+                            {
+                                allstudents[i].PrintToConsoleStudentAverage();
+                            }
                         }
-
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("There are no students!");
+                        }
                         break;
                     case "4":
-                        Console.WriteLine("Vardas     Pavardė        Galutinis(Med.)");
-                        Console.WriteLine("-----------------------------------------");
-                        for (int i = 0; i < allstudents.Count(); i++)
+                        
+                        try
                         {
-                            allstudents[i].PrintToConsoleStudentMediana();
+                            Console.WriteLine("Vardas     Pavardė        Galutinis(Med.)");
+                            Console.WriteLine("-----------------------------------------");
+                            for (int i = 0; i < allstudents.Count(); i++)
+                            {
+                                allstudents[i].PrintToConsoleStudentMediana();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("There are no students!");
                         }
                         break;
-                    
+
 
                     case "TERMINATE":
                         flag = "TERMINATE";
