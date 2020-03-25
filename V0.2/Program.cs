@@ -8,8 +8,8 @@ namespace ConsoleApp6
 {
     class Student
     {
-        public string name;
-        public string lastname;
+        private string name;
+        private string lastname;
         private List<double> grades;
         private double exam;
         private double avrg = 0;
@@ -24,6 +24,12 @@ namespace ConsoleApp6
             this.avrg = avrg;
             this.med = med;
         }
+
+        public string getName()
+        { return name; }
+
+        public string getLastName()
+        { return lastname; }
 
         public void SetStudentDetail(string inname, string inlastName, List<double> ingrades, double inexam)
         {
@@ -176,9 +182,9 @@ namespace ConsoleApp6
         {
             allstudents.Sort(delegate (Student p1, Student p2)
             {
-                int result = p1.name.CompareTo(p2.name);
+                int result = p1.getName().CompareTo(p2.getName());
                 if (result == 0)
-                    result = p1.lastname.CompareTo(p2.lastname);
+                    result = p1.getLastName().CompareTo(p2.getLastName());
                 return result;
             });
             Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", "Vardas", "Pavarde", "Galutinis(Vid.)/", "Galutinis(Med.)"));
