@@ -8,8 +8,8 @@ namespace ConsoleApp6
 {
     class Student
     {
-        private string name;
-        private string lastname;
+        public string name;
+        public string lastname;
         private List<double> grades;
         private double exam;
         private double avrg = 0;
@@ -174,7 +174,13 @@ namespace ConsoleApp6
         }
         public static void FilePrintOut()
         {
-            allstudents.Sort();
+            allstudents.Sort(delegate (Student p1, Student p2)
+            {
+                int result = p1.name.CompareTo(p2.name);
+                if (result == 0)
+                    result = p1.lastname.CompareTo(p2.lastname);
+                return result;
+            });
             Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", "Vardas", "Pavarde", "Galutinis(Vid.)/", "Galutinis(Med.)"));
             Console.WriteLine("-----------------------------------------------------------");
             for (int i = 0; i < allstudents.Count(); i++)
