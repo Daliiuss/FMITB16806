@@ -8,12 +8,40 @@ namespace ConsoleApp6
 {
     class Student
     {
-        string name = string.Empty;
-        string lastname = string.Empty;
-        List<double> grades = new List<double>();
-        double exam = 0;
-        double avrg = 0;
-        double med = 0;
+        private string name;
+        private string lastname;
+        private List<double> grades;
+        private double exam;
+        private double avrg = 0;
+        private double med = 0;
+
+        public void GetStudentDetail(string name, string lastname, List<double> grades, double exam, double avrg, double med)
+        {
+            this.name = name;
+            this.lastname = lastname;
+            this.grades = grades;
+            this.exam = exam;
+            this.avrg = avrg;
+            this.med = med;
+        }
+
+        public void SetStudentDetail(string inname, string inlastName, List<double> ingrades, double inexam)
+        {
+            this.name = inname;
+            this.lastname = inlastName;
+            this.grades = ingrades;
+            this.exam = inexam;
+            this.avrg = CalcAvrg(grades);
+            this.med= CalcMed(grades);
+        }
+
+        
+        //string name = string.Empty;
+        //string lastname = string.Empty;
+        //List<double> grades = new List<double>();
+        //double exam = 0;
+        
+        
 
         // finds average of all grades (except exam)
         public double CalcAvrg(List<double> grades)
@@ -26,7 +54,7 @@ namespace ConsoleApp6
             return (grades.Count - 1) / 2;
         }
 
-        public void GetStudentDetails(string inname, string inlastname, List<double> ingrades, double inexam)
+        public void AddStudentDetails(string inname, string inlastname, List<double> ingrades, double inexam)
         {
             name = inname;
             lastname = inlastname;
@@ -106,7 +134,7 @@ namespace ConsoleApp6
                     inexam = Convert.ToDouble(Console.ReadLine());
                 }
 
-                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam); //creates temp student to add to studentlist
+                tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam); //creates temp student to add to studentlist
                 Program.allstudents.Add(tempstudent); //adds student to the list
                 //clearing info
                 tempstudent = new Student();
@@ -121,7 +149,8 @@ namespace ConsoleApp6
             List<double> ingrades = new List<double>();
             double inexam = 0;
             Console.WriteLine("enter file directory");
-            string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";//Console.ReadLine();
+            string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";
+            //string textFile = Console.ReadLine();
             string[] lines = System.IO.File.ReadAllLines(textFile);
             foreach (string line in lines.Skip(1))
             {
@@ -134,7 +163,7 @@ namespace ConsoleApp6
                     ingrades.Add(Convert.ToDouble(ssizes[i]));
                 }
                 inexam = Convert.ToDouble(ssizes[ssizes.Count()-1]);
-                tempstudent.GetStudentDetails(inname, inlastname, ingrades, inexam);
+                tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam);
                 Program.allstudents.Add(tempstudent);
                 tempstudent = new Student();
                 ingrades.Clear();
@@ -145,6 +174,7 @@ namespace ConsoleApp6
         }
         public static void FilePrintOut()
         {
+            allstudents.Sort();
             Console.WriteLine(String.Format("{0,-10} {1,-10} {2,15} {3,20:.##}", "Vardas", "Pavarde", "Galutinis(Vid.)/", "Galutinis(Med.)"));
             Console.WriteLine("-----------------------------------------------------------");
             for (int i = 0; i < allstudents.Count(); i++)
