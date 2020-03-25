@@ -180,7 +180,12 @@ namespace V0_3
             {
                 char[] whitespace = new char[] { ' ', '\t' };
                 List<string> ssizes = new List<string>(line.Split(whitespace));
-                inname = ssizes[0];
+                if (ssizes == null || ssizes.Count == 0)
+                {
+                    Console.WriteLine("File is empty");
+                    break;
+                }
+                    inname = ssizes[0];
                 inlastname = ssizes[1];
                 for (int i = 2; i < ssizes.Count() - 2; i++)
                 {
