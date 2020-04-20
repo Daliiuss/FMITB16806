@@ -169,7 +169,9 @@ namespace V0._4
                         EnterStudents(studentcount);
                         break;
                     case "2":
-                        ReadFile();
+                        //
+                        string filepath = "C:\\Users\\User\\Desktop\\test.txt";
+                        allstudents =HelpFunctions.GetFileData(filepath);
                         FilePrintOut();
                         break;
                     case "3":

@@ -11,11 +11,62 @@ namespace V0._4
 {
     class HelpFunctions
     {
+        public static List<Student> GetFileData(string filepath)
+        {
 
-        /*public static void Testingfunction()
+            List<Student> studentList = new List<Student>();
+            Student tempstudent = new Student();
+            string inname, inlastname;
+            List<double> ingrades = new List<double>();
+            double inexam = 0;
+            string textFile = "";
+            textFile = filepath;
+            if (System.IO.File.Exists(textFile) == false)
+            {
+                Console.WriteLine("Wrong input / file doesn't exist. Please check your input.");
+                return null;
+            }
+
+            string[] lines = System.IO.File.ReadAllLines(textFile);
+            foreach (string line in lines.Skip(1))
+            {
+                //clearing spaces dividing into strings
+                char[] whitespace = new char[] { ' ', '\t' };
+                List<string> ssizes = new List<string>(line.Split(whitespace));
+                if (ssizes == null || ssizes.Count == 0)
+                {
+                    Console.WriteLine("File is empty");
+                    break;
+                }
+                //assigning values
+                inname = ssizes[0];
+                inlastname = ssizes[1];
+
+                for (int i = 2; i < ssizes.Count() - 2; i++)
+                {
+                    ingrades.Add(Convert.ToDouble(ssizes[i]));
+
+
+                }
+                try
+                {
+                    inexam = Convert.ToDouble(ssizes[ssizes.Count() - 1]);
+                }
+                catch
+                {
+
+                }
+                tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam);
+                studentList.Add(tempstudent);
+                tempstudent = new Student();
+                ingrades.Clear();
+            }
+            return studentList;
+        }
+        public static void Testingfunction()
         {
             //Console.WriteLine("say yellow");
-        }*/
+        }
         public static byte[] ObjectToByteArray(Object obj)
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -25,7 +76,6 @@ namespace V0._4
                 return ms.ToArray();
             }
         }
- 
         public static Student CreateStudent(int index)
         {
             Student tempstudent = new Student();
@@ -74,7 +124,7 @@ namespace V0._4
                         lastname = "Pavarde";
 
                     }
-
+                    fs.Close();
                 }
                 
             }
@@ -82,8 +132,8 @@ namespace V0._4
             {
                 Console.WriteLine(ex.ToString());
             }
+            
         }
-
         public static void Old_GenerateFile(string givenpath, double studentcount, string filename)
         {
             //string givenpath = @"c:\temp\MyTest.txt";
