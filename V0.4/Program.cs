@@ -158,6 +158,7 @@ namespace V0._4
                 Console.WriteLine("2 - get students from file");
                 Console.WriteLine("3 - get student list with averages");
                 Console.WriteLine("4 - get student list with mediana");
+                Console.WriteLine("5 - Generate student file");
                 Console.WriteLine("TERMINATE - exit");
                 caseSwitch = Console.ReadLine();
                 switch (caseSwitch)
@@ -223,8 +224,15 @@ namespace V0._4
                         break;
 
                     case "5":
-                        string givenpath = "";// Console.ReadLine();
-                        givenpath = "C:\\Users\\User\\Desktop\\";
+                        Console.WriteLine("Set file directory ");
+                        Console.WriteLine("Examples: ");
+                        Console.WriteLine("Set file directory to Desktop: C:\\Users\\User\\Desktop\\ or -d");
+                        Console.WriteLine("Set file directory to Documents: C:\\Users\\User\\Documents\\ or -doc");
+                        string givenpath = Console.ReadLine();
+                        if (givenpath == "-d")
+                        { givenpath = "C:\\Users\\User\\Desktop\\"; }
+                        if (givenpath == "-doc")
+                        { givenpath = "C:\\Users\\User\\Documents\\"; }
                         Console.WriteLine("Give file a name: ");
                         string filename = Console.ReadLine();
                         givenpath += filename + ".txt";
