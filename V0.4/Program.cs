@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +76,7 @@ namespace V0._4
             }
 
         }
-        public static void ReadFile()
+        /*public static void ReadFile()
         {
 
             Student tempstudent = new Student();
@@ -129,7 +130,7 @@ namespace V0._4
 
 
 
-        }
+        }*/
         public static void FilePrintOut()
         {
             allstudents.Sort(delegate (Student p1, Student p2)
