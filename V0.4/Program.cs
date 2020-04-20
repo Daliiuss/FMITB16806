@@ -20,6 +20,8 @@ namespace V0._4
         //method 
         public static void EnterStudents(int studentcount)
         {
+            var timer = new Stopwatch();
+            timer.Start();
             Student tempstudent = new Student();
             string inname, inlastname;
             List<double> ingrades = new List<double>();
@@ -30,6 +32,7 @@ namespace V0._4
             //bool result;
             for (int i = 0; i < studentcount; i++)
             {
+                
                 Console.WriteLine("Enter name");
                 inname = Console.ReadLine();
                 Console.WriteLine("Enter lastname");
@@ -73,6 +76,10 @@ namespace V0._4
                                                       //clearing info
                 tempstudent = new Student();
                 ingrades.Clear();
+                timer.Stop();
+                TimeSpan timeTaken = timer.Elapsed;
+                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+                Console.WriteLine(foo);
             }
 
         }

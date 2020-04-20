@@ -14,6 +14,8 @@ namespace V0._4
     {
         public static List<Student> GetFileData(string filepath)
         {
+            var timer = new Stopwatch();
+            timer.Start();
 
             List<Student> studentList = new List<Student>();
             Student tempstudent = new Student();
@@ -62,6 +64,11 @@ namespace V0._4
                 tempstudent = new Student();
                 ingrades.Clear();
             }
+            timer.Stop();
+
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+            Console.WriteLine(foo);
             return studentList;
         }
         public static Student CreateStudent(int index)
