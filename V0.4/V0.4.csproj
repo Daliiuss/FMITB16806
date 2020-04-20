@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{23715652-FBC6-471D-9FD7-3F046F02CB88}</ProjectGuid>
+    <ProjectGuid>{34CD5814-8B01-4432-8281-DD254A5FBDF2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>V0._2</RootNamespace>
-    <AssemblyName>V0.2</AssemblyName>
+    <RootNamespace>V0._4</RootNamespace>
+    <AssemblyName>V0.4</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpFunctions.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
