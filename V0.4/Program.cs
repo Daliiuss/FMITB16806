@@ -112,6 +112,7 @@ namespace V0._4
                 Console.WriteLine("3 - get student list with averages");
                 Console.WriteLine("4 - get student list with mediana");
                 Console.WriteLine("5 - Generate student file");
+                Console.WriteLine("6 - Group students to file");
                 Console.WriteLine("TERMINATE - exit");
                 caseSwitch = Console.ReadLine();
                 switch (caseSwitch)
@@ -129,9 +130,9 @@ namespace V0._4
                         break;
                     case "3":
 
-                        if (allstudents.Count() == 0 || allstudents == null )
+                        if (HelpFunctions.StudentListCheck(allstudents)==false)
                         {
-                            Console.WriteLine("There are no students!");
+                            Console.WriteLine("List empty!");
                             break;
                         }
                         Console.WriteLine("Vardas     Pavardė        Galutinis(Vid.)");
@@ -153,9 +154,8 @@ namespace V0._4
                         Case4:
                         try
                         {
-                            if (allstudents.Count() == 0)
+                            if (HelpFunctions.StudentListCheck(allstudents) == false)
                             {
-                                Console.WriteLine("There are no students!");
                                 break;
                             }
                             Console.WriteLine("Vardas     Pavardė        Galutinis(Med.)");
@@ -194,6 +194,15 @@ namespace V0._4
                         Console.WriteLine("Give student count: ");
                         double studentscount = Convert.ToDouble(Console.ReadLine());
                         HelpFunctions.GenerateFile(givenpath, studentscount);
+                        break;
+                    case "6":
+                        if (HelpFunctions.StudentListCheck(allstudents) == false)
+                        {
+                            Console.WriteLine("List empty!");
+                            break;
+                        }
+                        HelpFunctions.StudentGrouping(allstudents);
+                        Console.WriteLine("Students are grouped! ");
                         break;
 
                     case "TERMINATE":

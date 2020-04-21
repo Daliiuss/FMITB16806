@@ -12,52 +12,78 @@ namespace V0._4
 {
     class HelpFunctions
     {
-        public static void objTofile (Student toString, string towhere)
+        public static bool StudentListCheck(List<Student> studentlist)
+        {
+            if (studentlist.Count() == 0 || studentlist == null)
             {
-            string objstring = String.Format("{0} {1} {2} {3} {4}", toString.getName(), toString.getLastName(), toString.getAvrg(), toString.getFinal(), Environment.NewLine);
+                Console.WriteLine("There are no students!");
+                return false;
+            }
+            return true;
+        }
+        public static bool DirectoryCheck(string path)
+        {
+            if (System.IO.File.Exists(path) == false)
+            {
+                Console.WriteLine("Wrong input / file doesn't exist. Please check your input.");
+                return false;
+            }
+            return true;
+        }
+        public static void LstTofile(List<Student> studentlist, string towhere)
+            {
+            
             try
             {
                 // Create the file, or overwrite if the file exists.
                 using (FileStream fs = File.Create(towhere))
                 {
-                    byte[] info = Encoding.ASCII.GetBytes(objstring);
-                    fs.Write(info, 0, info.Length);
+                    string objstring = "";
+                    for (int i = 0; i < studentlist.Count(); i++)
+                    {
+                        objstring = String.Format("{0} {1} {2} {3} {4}", studentlist[i].getName(), studentlist[i].getLastName(), studentlist[i].getAvrg(), studentlist[i].CalcFinal(), Environment.NewLine);
+                        byte[] info = Encoding.ASCII.GetBytes(objstring);
+                        fs.Write(info, 0, info.Length);
+                    }
                     fs.Close();
                 }
-
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
+
         }
         
         public static void StudentGrouping(List<Student> studentlist)
         {
             //
-            string printStr = "";
+            string printStr1 = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
+            string printStr2 = "C:\\Users\\User\\Desktop\\goodchaps.txt";
+            if (DirectoryCheck("C:\\Users\\User\\Desktop\\") == false)
+            {
+                Console.WriteLine("Directory doesn't exist. Please check your input.");
+                return;
+            }
             List<Student> goodGroup = new List<Student>();
             List<Student> badGroup = new List<Student>();
             for (int i = 0; i < studentlist.Count(); i++)
             {
-                if (studentlist[i].getFinal() < 5)
+                if (studentlist[i].CalcFinal() < 5)
                 {
                     badGroup.Add(studentlist[i]);
-                    printStr = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
-                    objTofile(studentlist[i], printStr);
+                    
                 }
 
-                if (studentlist[i].getFinal() >= 5)
+                if (studentlist[i].CalcFinal() >= 5)
                 {
                     goodGroup.Add(studentlist[i]);
-                    printStr = "C:\\Users\\User\\Desktop\\goodchaps.txt";
-                    objTofile(studentlist[i], printStr);
-
-
                 }
 
             }
-            
+            LstTofile(badGroup, printStr1);
+            LstTofile(goodGroup, printStr2);
         }
         public static List<Student> GetFileData(string filepath)
         {
@@ -71,7 +97,7 @@ namespace V0._4
             double inexam = 0;
             string textFile = "";
             textFile = filepath;
-            if (System.IO.File.Exists(textFile) == false)
+            if (DirectoryCheck(filepath) == false)
             {
                 Console.WriteLine("Wrong input / file doesn't exist. Please check your input.");
                 return null;
@@ -95,8 +121,6 @@ namespace V0._4
                 for (int i = 2; i < ssizes.Count() - 2; i++)
                 {
                     ingrades.Add(Convert.ToDouble(ssizes[i]));
-
-
                 }
                 try
                 {

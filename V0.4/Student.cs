@@ -44,7 +44,7 @@ namespace V0._4
             this.exam = inexam;
             this.avrg = CalcAvrg(grades);
             this.med = CalcMed(grades);
-            this.final = CalcFinal(avrg, inexam);
+            this.final = CalcFinal();
         }
 
 
@@ -53,9 +53,9 @@ namespace V0._4
         //List<double> grades = new List<double>();
         //double exam = 0;
 
-        public double CalcFinal(double avrg, double inexam)
+        public double CalcFinal()
         {
-            final = 0.3 * avrg + 0.7 * inexam;
+            final = 0.3 * avrg + 0.7 * exam;
             return final;
         }
 
