@@ -12,6 +12,53 @@ namespace V0._4
 {
     class HelpFunctions
     {
+        public static void objTofile (Student toString, string towhere)
+            {
+            string objstring = String.Format("{0} {1} {2} {3} {4}", toString.getName(), toString.getLastName(), toString.getAvrg(), toString.getFinal(), Environment.NewLine);
+            try
+            {
+                // Create the file, or overwrite if the file exists.
+                using (FileStream fs = File.Create(towhere))
+                {
+                    byte[] info = Encoding.ASCII.GetBytes(objstring);
+                    fs.Write(info, 0, info.Length);
+                    fs.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        
+        public static void StudentGrouping(List<Student> studentlist)
+        {
+            //
+            string printStr = "";
+            List<Student> goodGroup = new List<Student>();
+            List<Student> badGroup = new List<Student>();
+            for (int i = 0; i < studentlist.Count(); i++)
+            {
+                if (studentlist[i].getFinal() < 5)
+                {
+                    badGroup.Add(studentlist[i]);
+                    printStr = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
+                    objTofile(studentlist[i], printStr);
+                }
+
+                if (studentlist[i].getFinal() >= 5)
+                {
+                    goodGroup.Add(studentlist[i]);
+                    printStr = "C:\\Users\\User\\Desktop\\goodchaps.txt";
+                    objTofile(studentlist[i], printStr);
+
+
+                }
+
+            }
+            
+        }
         public static List<Student> GetFileData(string filepath)
         {
             var timer = new Stopwatch();

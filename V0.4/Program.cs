@@ -83,61 +83,6 @@ namespace V0._4
             }
 
         }
-        /*public static void ReadFile()
-        {
-
-            Student tempstudent = new Student();
-            string inname, inlastname;
-            List<double> ingrades = new List<double>();
-            double inexam = 0;
-            string textFile = "";
-            Console.WriteLine("enter file directory");
-
-            //string textFile = "C:\\Users\\User\\Desktop\\kursiokai.txt";
-            Direnter:
-            textFile = Console.ReadLine();
-            if (System.IO.File.Exists(textFile) == false)
-            {
-                Console.WriteLine("Wrong input / file doesn't exist. Please try again.");
-                goto Direnter;
-            }
-
-            string[] lines = System.IO.File.ReadAllLines(textFile);
-            foreach (string line in lines.Skip(1))
-            {
-                char[] whitespace = new char[] { ' ', '\t' };
-                List<string> ssizes = new List<string>(line.Split(whitespace));
-                if (ssizes == null || ssizes.Count == 0)
-                {
-                    Console.WriteLine("File is empty");
-                    break;
-                }
-                inname = ssizes[0];
-                inlastname = ssizes[1];
-                for (int i = 2; i < ssizes.Count() - 2; i++)
-                {
-                    LoopStart:
-                    try
-                    {
-                        ingrades.Add(Convert.ToDouble(ssizes[i]));
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Wrong input! *read file error*");
-                        goto LoopStart;
-                    }
-
-                }
-                inexam = Convert.ToDouble(ssizes[ssizes.Count() - 1]);
-                tempstudent.AddStudentDetails(inname, inlastname, ingrades, inexam);
-                Program.allstudents.Add(tempstudent);
-                tempstudent = new Student();
-                ingrades.Clear();
-            }
-
-
-
-        }*/
         public static void FilePrintOut()
         {
             allstudents.Sort(delegate (Student p1, Student p2)

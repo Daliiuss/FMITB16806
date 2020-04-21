@@ -16,8 +16,9 @@ namespace V0._4
         private double exam;
         private double avrg = 0;
         private double med = 0;
+        private double final = 0;
 
-        public void GetStudentDetail(string name, string lastname, List<double> grades, double exam, double avrg, double med)
+        public void GetStudentDetail(string name, string lastname, List<double> grades, double exam, double avrg, double med, double final)
         {
             this.name = name;
             this.lastname = lastname;
@@ -25,6 +26,7 @@ namespace V0._4
             this.exam = exam;
             this.avrg = avrg;
             this.med = med;
+            this.final = final;
         }
 
         public string getName()
@@ -32,6 +34,7 @@ namespace V0._4
 
         public string getLastName()
         { return lastname; }
+
 
         public void SetStudentDetail(string inname, string inlastName, List<double> ingrades, double inexam)
         {
@@ -41,6 +44,7 @@ namespace V0._4
             this.exam = inexam;
             this.avrg = CalcAvrg(grades);
             this.med = CalcMed(grades);
+            this.final = CalcFinal(avrg, inexam);
         }
 
 
@@ -49,13 +53,24 @@ namespace V0._4
         //List<double> grades = new List<double>();
         //double exam = 0;
 
+        public double CalcFinal(double avrg, double inexam)
+        {
+            final = 0.3 * avrg + 0.7 * inexam;
+            return final;
+        }
 
+        public double getFinal()
+        { return final; }
 
         // finds average of all grades (except exam)
         public double CalcAvrg(List<double> grades)
         {
             return grades.Average();
         }
+
+        public double getAvrg()
+        { return avrg; }
+
         // finds mediana of all grades (except exam)
         public double CalcMed(List<double> grades)
         {
