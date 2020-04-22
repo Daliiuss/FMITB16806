@@ -1,7 +1,0 @@
-C:\Users\User\source\repos\V0.2\V0.2\bin\Debug\V0.2.exe.config
-C:\Users\User\source\repos\V0.2\V0.2\bin\Debug\V0.2.exe
-C:\Users\User\source\repos\V0.2\V0.2\bin\Debug\V0.2.pdb
-C:\Users\User\source\repos\V0.2\V0.2\obj\Debug\V0.2.csprojAssemblyReference.cache
-C:\Users\User\source\repos\V0.2\V0.2\obj\Debug\V0.2.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\V0.2\V0.2\obj\Debug\V0.2.exe
-C:\Users\User\source\repos\V0.2\V0.2\obj\Debug\V0.2.pdb
