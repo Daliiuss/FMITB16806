@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\bin\Debug\V0.5 LL.exe.config
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\bin\Debug\V0.5 LL.exe
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\bin\Debug\V0.5 LL.pdb
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\obj\Debug\V0.5 LL.csprojAssemblyReference.cache
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\obj\Debug\V0.5 LL.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\obj\Debug\V0.5 LL.exe
+C:\Users\User\source\repos\V0.5 LL\V0.5 LL\obj\Debug\V0.5 LL.pdb
