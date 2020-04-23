@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Debug\V0.5 Q.csprojAssemblyReference.cache
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Debug\V0.5 Q.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Debug\V0.5 Q.exe.config
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Debug\V0.5 Q.exe
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Debug\V0.5 Q.pdb
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Debug\V0.5 Q.exe
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Debug\V0.5 Q.pdb

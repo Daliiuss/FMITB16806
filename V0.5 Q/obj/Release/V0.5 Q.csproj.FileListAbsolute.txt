@@ -1,0 +1,6 @@
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Release\V0.5 Q.exe.config
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Release\V0.5 Q.exe
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\bin\Release\V0.5 Q.pdb
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Release\V0.5 Q.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Release\V0.5 Q.exe
+C:\Users\User\source\repos\V0.5 Q\V0.5 Q\obj\Release\V0.5 Q.pdb
