@@ -126,8 +126,10 @@ namespace V0._5
                         break;
                     case "2":
                         //
-                        string filepath = "C:\\Users\\User\\Desktop\\test.txt";
-                        //allstudents =HelpFunctions.GetFileData(filepath);
+                        Console.WriteLine("Center file name (file must be on the desktop)");
+                        string filepath = "C:\\Users\\User\\Desktop";
+                        string filen = Console.ReadLine();
+                        filepath = filepath + "\\" + filen + ".txt";
                         allstudents = HelpFunctions.Readfiledata(filepath);
                         //FilePrintOut();
                         break;

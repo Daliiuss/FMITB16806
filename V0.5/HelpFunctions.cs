@@ -152,6 +152,11 @@ namespace V0._5
             var timer = new Stopwatch();
             timer.Start();
             List<Student> studentList = new List<Student>();
+            if (DirectoryCheck(fileName) == false)
+            {
+                Console.WriteLine("Directory doesn't exist. Please check your input.");
+                return null;
+            }
             using (StreamReader sr = File.OpenText(fileName))
             {
 
