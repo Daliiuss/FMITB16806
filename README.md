@@ -42,17 +42,25 @@ After studying 2 strategies I found out that using Strategy 1, my program works 
 This was proven after checking on 3 files (100 000, 1 000 000, 10 000 000) 
 Time table: 
 
-Files..........S1.............S2;
-100 000........0:00.246.......0:01.236;
-1 000 000......0:01.156.......0:59.219;
-10 000 000.....0:11.849.......takes way too long
+Files..........S1.............S2;  
+
+100 000........0:00.246.......0:01.236;  
+
+1 000 000......0:01.156.......0:59.219;  
+
+10 000 000.....0:11.849.......takes way too long  
+
 
 Memory table: 
 
-Files..........S1.............S2;
-100 000........32407552.......31760384;
-1 000 000......169549824.......162357248
-10 000 000.....1601216512.......takes way too long;
+Files..........S1.............S2;  
+
+100 000........32407552.......31760384;  
+
+1 000 000......169549824.......162357248;  
+
+10 000 000.....1601216512.......takes way too long;  
+
 
 S1- strategy 1, S2- strategy 2
 Instalation:
@@ -60,4 +68,27 @@ Instalation:
     Open .exe file.
     Generate files, or enter new students!
 
-Changelog: V0.1 -Initial state V0.2 -Added read from file V0.3 -implemented several try/catches -added few crash preventions and fail-safes V0.4 -Added sorting to files. -Added file generator V0.4.1 -Functions fixed, read more on V0.4.1 commit V0.5 -tested different methods on containing date within program, stayed with List container. -Other versions are available with LinkedList and Queue.
+
+Brief Changelog: 
+V0.1: 
+-Initial state   
+
+V0.2 
+-Added read from file   
+
+V0.3 
+-implemented several try/catches 
+-added few crash preventions and fail-safes   
+
+V0.3.1
+-Separation to 3 different files  
+
+V0.4 
+-Added sorting to files. -Added file generator  
+
+V0.4.1 
+-Functions fixed, read more on V0.4.1 commit   
+
+V0.5 
+-tested different methods on containing date within program, stayed with List container. 
+-Other versions are available with LinkedList and Queue.
