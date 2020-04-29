@@ -63,7 +63,7 @@ namespace V1._0
             //
             string printStr1 = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
             string printStr2 = "C:\\Users\\User\\Desktop\\goodchaps.txt";
-            /*if (DirectoryCheck("C:\\Users\\User\\Desktop\\") == false)
+            /*if (DirectoryCheck("C:\\Users\\User\\Desktop") == false)
             {
                 Console.WriteLine("Directory doesn't exist. Please check your input.");
                 return;
@@ -75,7 +75,7 @@ namespace V1._0
                 if (studentlist[i].CalcFinal() < 5)
                 {
                     badGroup.Add(studentlist[i]);
-                    studentlist.Remove(studentlist[i]);
+                    studentlist.RemoveAt(i);
                 }
 
         
