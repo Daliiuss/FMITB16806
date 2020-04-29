@@ -63,6 +63,8 @@ Files..........S1.............S2;
 
 
 S1- strategy 1, S2- strategy 2
+
+After analyzing data. I conluded, that: Yes - strategy 2 is more efficient using memory, but it lacks speed. As strategy 2 might not be as efficient using memory, but it manages to save a lot of time. Probably the poor results of the strategy 1 one might be caused by function that deletes entries from the list. Also, in next version, code should be more optimized.
 Instalation:
 
     Open .exe file.
