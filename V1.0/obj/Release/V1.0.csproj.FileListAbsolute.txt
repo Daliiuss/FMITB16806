@@ -1,6 +1,0 @@
-C:\Users\User\source\repos\V1.0\V1.0\bin\Release\V1.0.exe.config
-C:\Users\User\source\repos\V1.0\V1.0\bin\Release\V1.0.exe
-C:\Users\User\source\repos\V1.0\V1.0\bin\Release\V1.0.pdb
-C:\Users\User\source\repos\V1.0\V1.0\obj\Release\V1.0.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\V1.0\V1.0\obj\Release\V1.0.exe
-C:\Users\User\source\repos\V1.0\V1.0\obj\Release\V1.0.pdb
