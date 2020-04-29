@@ -58,17 +58,15 @@ namespace V1._0
         }
         public static void StudentGroupingStrategy2(List<Student> studentlist)
         {
-            var timer = new Stopwatch();
-            timer.Start();
+            
             //
             string printStr1 = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
             string printStr2 = "C:\\Users\\User\\Desktop\\goodchaps.txt";
-            /*if (DirectoryCheck("C:\\Users\\User\\Desktop") == false)
+            /*if (DirectoryCheck("C:\\Users\\User\\Desktop") == false )
             {
                 Console.WriteLine("Directory doesn't exist. Please check your input.");
                 return;
             }*/
-            List<Student> goodGroup = new List<Student>();
             List<Student> badGroup = new List<Student>();
             for (int i = 0; i < studentlist.Count(); i++)
             {
@@ -77,28 +75,20 @@ namespace V1._0
                     badGroup.Add(studentlist[i]);
                     studentlist.RemoveAt(i);
                 }
-
-        
-
             }
             LstTofile(badGroup, printStr1);
-            LstTofile(studentlist, printStr2);
-            {
-                timer.Stop();
-
-                TimeSpan timeTaken = timer.Elapsed;
-                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
-                Console.WriteLine(foo);
-            }
+            
+     
         }
         public static void StudentGrouping(List<Student> studentlist)
         {
+            Process proc = Process.GetCurrentProcess();
             var timer = new Stopwatch();
             timer.Start();
             //
             string printStr1 = "C:\\Users\\User\\Desktop\\notsofortunate.txt";
             string printStr2 = "C:\\Users\\User\\Desktop\\goodchaps.txt";
-            /*if (DirectoryCheck("C:\\Users\\User\\Desktop\\") == false)
+            /*if (DirectoryCheck("C:\\Users\\User\\Desktop") == false)
             {
                 Console.WriteLine("Directory doesn't exist. Please check your input.");
                 return;
@@ -124,8 +114,9 @@ namespace V1._0
                 timer.Stop();
 
                 TimeSpan timeTaken = timer.Elapsed;
-                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff")+ "using strategy 1";
                 Console.WriteLine(foo);
+                Console.WriteLine(proc.PrivateMemorySize64);
             }
         }
         public static List<Student> GetFileData(string filepath)
@@ -184,6 +175,7 @@ namespace V1._0
         }
         public static List<Student> Readfiledata(string fileName)
         {
+            Process proc = Process.GetCurrentProcess();
             var timer = new Stopwatch();
             timer.Start();
             List<Student> studentList = new List<Student>();
@@ -219,6 +211,7 @@ namespace V1._0
                 TimeSpan timeTaken = timer.Elapsed;
                 string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
                 Console.WriteLine(foo);
+                Console.WriteLine(proc.PrivateMemorySize64);
             }
             return studentList;
         }

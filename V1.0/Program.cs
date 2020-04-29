@@ -212,12 +212,22 @@ namespace V1._0
                         break;
 
                     case "7":
+                        Process proc = Process.GetCurrentProcess();
+                        var timer = new Stopwatch();
+                        timer.Start();
                         if (HelpFunctions.StudentListCheck(allstudents) == false)
                         {
                             Console.WriteLine("List empty!");
                             break;
                         }
                         HelpFunctions.StudentGroupingStrategy2(allstudents);
+                        HelpFunctions.LstTofile(allstudents, "C:\\Users\\User\\Desktop\\goodchaps.txt");
+                        timer.Stop();
+
+                        TimeSpan timeTaken = timer.Elapsed;
+                        string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff") + "using strategy 2";
+                        Console.WriteLine(foo);
+                        Console.WriteLine(proc.PrivateMemorySize64);
                         Console.WriteLine("Students are grouped! ");
                         break;
 
