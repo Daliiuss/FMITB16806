@@ -114,7 +114,8 @@ namespace V1._0
                 Console.WriteLine("3 - get student list with averages");
                 Console.WriteLine("4 - get student list with mediana");
                 Console.WriteLine("5 - Generate student file");
-                Console.WriteLine("6 - Group students to file");
+                Console.WriteLine("6 - Group students to file (Strategy 1)");
+                Console.WriteLine("7 - Group students to file (Strategy 2)");
                 Console.WriteLine("-e - exit");
                 caseSwitch = Console.ReadLine();
                 switch (caseSwitch)
@@ -207,6 +208,16 @@ namespace V1._0
                             break;
                         }
                         HelpFunctions.StudentGrouping(allstudents);
+                        Console.WriteLine("Students are grouped! ");
+                        break;
+
+                    case "7":
+                        if (HelpFunctions.StudentListCheck(allstudents) == false)
+                        {
+                            Console.WriteLine("List empty!");
+                            break;
+                        }
+                        HelpFunctions.StudentGroupingStrategy2(allstudents);
                         Console.WriteLine("Students are grouped! ");
                         break;
 
